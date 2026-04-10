@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 12 DBMS - Database Models</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<!-- NAV -->
+<nav class="bg-indigo-900 text-white p-3 fixed w-full top-0 shadow">
+  <div class="flex justify-between">
+    <h1 class="font-bold">📊 Database Models - Class 12 DBMS</h1>
+    <div class="space-x-4 text-sm">
+      <a href="#intro">Intro</a>
+      <a href="#hierarchical">Hierarchical</a>
+      <a href="#network">Network</a>
+      <a href="#relational">Relational</a>
+      <a href="#compare">Compare</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#tps">TPS/TGS</a>
+      <a href="#project">Project</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section class="pt-20 text-center p-6">
+  <h1 class="text-3xl font-bold text-indigo-900">1.5 Database Models</h1>
+  <p class="text-gray-600">Class 12 Computer Science - DBMS</p>
+</section>
+
+<!-- INTRO -->
+<section id="intro" class="bg-white m-6 p-6 rounded shadow">
+  <h2 class="text-xl font-bold">📌 Introduction</h2>
+  <p class="mt-2">
+    A database model defines the logical structure of a database and determines how data is stored,
+    organized, and manipulated in DBMS.
+  </p>
+</section>
+
+<!-- HIERARCHICAL -->
+<section id="hierarchical" class="bg-white m-6 p-6 rounded shadow">
+  <h2 class="text-2xl font-bold text-blue-700">🌳 1. Hierarchical Model</h2>
+
+  <p class="mt-2">
+    Data is organized in a tree-like structure where each parent can have multiple children,
+    but a child has only one parent.
+  </p>
+
+  <h3 class="mt-3 font-bold">📌 Features:</h3>
+  <ul class="list-disc pl-6">
+    <li>One-to-many relationship</li>
+    <li>Tree structure (root → branches)</li>
+    <li>Fast navigation for structured data</li>
+  </ul>
+
+  <h3 class="mt-3 font-bold">📊 Diagram:</h3>
+  <pre class="bg-black text-green-300 p-3 rounded mt-2">
+        University
+            |
+    ----------------
+    |              |
+  CS Dept       IT Dept
+    |              |
+ Students       Students
+  </pre>
+
+</section>
+
+<!-- NETWORK -->
+<section id="network" class="bg-white m-6 p-6 rounded shadow">
+  <h2 class="text-2xl font-bold text-purple-700">🕸️ 2. Network Model</h2>
+
+  <p class="mt-2">
+    Data is represented in a graph structure where multiple relationships are possible.
+  </p>
+
+  <h3 class="mt-3 font-bold">📌 Features:</h3>
+  <ul class="list-disc pl-6">
+    <li>Many-to-many relationship</li>
+    <li>Flexible structure</li>
+    <li>Complex data handling</li>
+  </ul>
+
+  <h3 class="mt-3 font-bold">📊 Diagram:</h3>
+  <pre class="bg-black text-green-300 p-3 rounded mt-2">
+  Student ----- Course
+     \           /
+      \         /
+       Teacher
+  </pre>
+
+</section>
+
+<!-- RELATIONAL -->
+<section id="relational" class="bg-white m-6 p-6 rounded shadow">
+  <h2 class="text-2xl font-bold text-green-700">📋 3. Relational Model</h2>
+
+  <p class="mt-2">
+    Data is stored in tables (relations) consisting of rows and columns.
+    It is the most widely used database model today.
+  </p>
+
+  <h3 class="mt-3 font-bold">📌 Features:</h3>
+  <ul class="list-disc pl-6">
+    <li>Table-based structure</li>
+    <li>Uses SQL language</li>
+    <li>Easy to manage and understand</li>
+  </ul>
+
+  <h3 class="mt-3 font-bold">📊 Example Table:</h3>
+
+  <pre class="bg-gray-900 text-white p-3 rounded mt-2">
++----+--------+-----+
+| ID | Name   | Age |
++----+--------+-----+
+| 1  | Ram    | 18  |
+| 2  | Sita   | 19  |
++----+--------+-----+
+  </pre>
+
+</section>
+
+<!-- COMPARISON -->
+<section id="compare" class="bg-white m-6 p-6 rounded shadow">
+  <h2 class="text-xl font-bold">⚖️ Comparison of Database Models</h2>
+
+  <table class="w-full mt-3 border">
+    <tr class="bg-gray-200">
+      <th class="border p-2">Model</th>
+      <th class="border p-2">Structure</th>
+      <th class="border p-2">Relationship</th>
+      <th class="border p-2">Use</th>
+    </tr>
+    <tr>
+      <td class="border p-2">Hierarchical</td>
+      <td class="border p-2">Tree</td>
+      <td class="border p-2">One-to-many</td>
+      <td class="border p-2">Old systems</td>
+    </tr>
+    <tr>
+      <td class="border p-2">Network</td>
+      <td class="border p-2">Graph</td>
+      <td class="border p-2">Many-to-many</td>
+      <td class="border p-2">Complex systems</td>
+    </tr>
+    <tr>
+      <td class="border p-2">Relational</td>
+      <td class="border p-2">Table</td>
+      <td class="border p-2">All types</td>
+      <td class="border p-2">Modern DBMS (MySQL)</td>
+    </tr>
+  </table>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="bg-white m-6 p-6 rounded shadow">
+  <h2 class="text-xl font-bold">🧠 MCQ Quiz (10 Questions)</h2>
+
+  <div id="quizBox"></div>
+
+  <button onclick="check()" class="bg-indigo-900 text-white px-4 py-2 rounded mt-3">
+    Submit Quiz
+  </button>
+
+  <p id="result" class="mt-2 font-bold"></p>
+</section>
+
+<!-- TPS / TGS -->
+<section id="tps" class="m-6 grid md:grid-cols-2 gap-4">
+
+  <div class="bg-white p-4 rounded shadow">
+    <h3 class="font-bold">🤝 TPS (Think–Pair–Share)</h3>
+    <ul class="list-disc pl-5">
+      <li>Why relational model is most popular?</li>
+      <li>Difference between hierarchical and network model</li>
+      <li>Where is tree structure used in real life?</li>
+    </ul>
+  </div>
+
+  <div class="bg-white p-4 rounded shadow">
+    <h3 class="font-bold">👥 TGS (Think–Group–Share)</h3>
+    <ul class="list-disc pl-5">
+      <li>Design school database using relational model</li>
+      <li>Draw ER diagram for hospital system</li>
+      <li>Compare models in real banking system</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- PROJECT -->
+<section id="project" class="bg-white m-6 p-6 rounded shadow">
+  <h2 class="font-bold text-lg">📌 Home Assignment</h2>
+
+  <ul class="list-disc pl-6 mt-2">
+    <li>Create PPT on Database Models</li>
+    <li>Draw diagrams of all 3 models</li>
+    <li>Write real-life examples</li>
+    <li>Explain why relational model dominates today</li>
+  </ul>
+</section>
+
+<script>
+const q = [
+ {q:"Hierarchical model is based on?",o:["Graph","Tree","Table","Network"],a:1},
+ {q:"Network model supports?",o:["One-to-one","One-to-many","Many-to-many","None"],a:2},
+ {q:"Relational model uses?",o:["Tables","Graphs","Trees","Files"],a:0},
+ {q:"Most used model today?",o:["Hierarchical","Network","Relational","File"],a:2},
+ {q:"Hierarchical model is?",o:["Flexible","Rigid tree","Graph","Random"],a:1},
+ {q:"Network model is based on?",o:["Tree","Graph","Table","Array"],a:1},
+ {q:"Relational model uses language?",o:["HTML","SQL","C","Python"],a:1},
+ {q:"Example DBMS for relational?",o:["MySQL","Windows","Linux","CPU"],a:0},
+ {q:"Child in hierarchical has?",o:["Many parents","One parent","No parent","Infinite"],a:1},
+ {q:"Database model defines?",o:["Hardware","Structure of database","Internet","CPU speed"],a:1}
+];
+
+let box=document.getElementById("quizBox");
+
+q.forEach((x,i)=>{
+ let html=`<div class='mb-3'><p>${x.q}</p>`;
+ x.o.forEach((o,j)=>{
+  html+=`<label><input type='radio' name='q${i}' value='${j}'> ${o}</label><br>`;
+ });
+ html+="</div>";
+ box.innerHTML+=html;
+});
+
+function check(){
+ let score=0;
+ q.forEach((x,i)=>{
+  let ans=document.querySelector(`input[name=q${i}]:checked`);
+  if(ans && ans.value==x.a) score++;
+ });
+ document.getElementById("result").innerText="Score: "+score+"/10";
+}
+</script>
+
+</body>
+</html>
