@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Database Normalization (1NF, 2NF, 3NF)</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f4f6f9;
+        color: #222;
+    }
+    header {
+        background: #4F46E5;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    section {
+        padding: 20px;
+    }
+    .card {
+        background: white;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    table, th, td {
+        border: 1px solid #ccc;
+    }
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+    .highlight {
+        background: #E0E7FF;
+    }
+    button {
+        padding: 8px 12px;
+        margin-top: 10px;
+        cursor: pointer;
+        background: #10B981;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+    .quiz {
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Database Normalization (1NF, 2NF, 3NF)</h1>
+    <p>Reduce Redundancy • Improve Data Integrity • Organize Data Efficiently</p>
+</header>
+
+<section>
+
+<!-- INTRO -->
+<div class="card">
+<h2>📌 What is Normalization?</h2>
+<p>
+Normalization is the process of organizing data in a database to:
+</p>
+<ul>
+<li>Reduce data redundancy</li>
+<li>Improve data integrity</li>
+<li>Avoid anomalies (insert, update, delete problems)</li>
+</ul>
+</div>
+
+<!-- REDUNDANCY -->
+<div class="card">
+<h2>⚠️ Data Redundancy (Example)</h2>
+<p>
+Data redundancy means repeating the same data multiple times.
+</p>
+
+<table>
+<tr>
+<th>Student ID</th><th>Name</th><th>Course</th><th>Teacher</th>
+</tr>
+<tr>
+<td>1</td><td>Ram</td><td>DBMS</td><td>Mr. Sharma</td>
+</tr>
+<tr>
+<td>2</td><td>Sita</td><td>DBMS</td><td>Mr. Sharma</td>
+</tr>
+<tr>
+<td>3</td><td>Hari</td><td>DBMS</td><td>Mr. Sharma</td>
+</tr>
+</table>
+
+<p>
+👉 "Mr. Sharma" is repeated → this is redundancy.
+</p>
+</div>
+
+<!-- INTEGRITY -->
+<div class="card">
+<h2>🔐 Data Integrity (Example)</h2>
+<p>
+Data integrity means data is accurate and consistent.
+</p>
+
+<p>
+If teacher name changes from "Mr. Sharma" → "Mr. Shrestha":
+</p>
+
+<ul>
+<li>Without normalization → multiple rows must be updated ❌ (error risk)</li>
+<li>With normalization → update once only ✅</li>
+</ul>
+</div>
+
+<!-- 1NF -->
+<div class="card">
+<h2>1NF (First Normal Form)</h2>
+<ul>
+<li>No repeating groups</li>
+<li>Each column must have atomic values</li>
+</ul>
+
+<table>
+<tr>
+<th>Student</th><th>Phone</th></tr>
+<tr>
+<td>Ram</td><td>9801, 9812 ❌</td>
+</tr>
+</table>
+
+<p>✔ Fix (1NF):</p>
+
+<table>
+<tr><th>Student</th><th>Phone</th></tr>
+<tr><td>Ram</td><td>9801</td></tr>
+<tr><td>Ram</td><td>9812</td></tr>
+</table>
+</div>
+
+<!-- 2NF -->
+<div class="card">
+<h2>2NF (Second Normal Form)</h2>
+<ul>
+<li>Must be in 1NF</li>
+<li>Remove partial dependency</li>
+</ul>
+
+<p><b>Partial Dependency Example:</b></p>
+<table>
+<tr>
+<th>StudentID</th><th>CourseID</th><th>StudentName</th><th>CourseName</th>
+</tr>
+<tr>
+<td>1</td><td>C1</td><td>Ram</td><td>DBMS</td>
+</tr>
+</table>
+
+<p>
+👉 StudentName depends only on StudentID, not full key (StudentID + CourseID)
+</p>
+</div>
+
+<!-- 3NF -->
+<div class="card">
+<h2>3NF (Third Normal Form)</h2>
+<ul>
+<li>Must be in 2NF</li>
+<li>Remove transitive dependency</li>
+</ul>
+
+<p><b>Transitive Dependency Example:</b></p>
+<table>
+<tr>
+<th>StudentID</th><th>DeptID</th><th>DeptName</th>
+</tr>
+<tr>
+<td>1</td><td>D1</td><td>Computer Science</td>
+</tr>
+</table>
+
+<p>
+👉 StudentID → DeptID → DeptName (transitive dependency)
+</p>
+</div>
+
+<!-- TPS -->
+<div class="card">
+<h2>🧑‍🏫 TPS (Think–Pair–Share)</h2>
+<ol>
+<li><b>Think:</b> Why is repeating "teacher name" in every row bad?</li>
+<li><b>Pair:</b> Discuss with your partner how 1NF fixes it</li>
+<li><b>Share:</b> Present your answer to class</li>
+</ol>
+</div>
+
+<!-- TGS -->
+<div class="card">
+<h2>👥 TGS (Team Group Study)</h2>
+<ul>
+<li>Divide into groups of 4–5 students</li>
+<li>Each group designs a normalized database for a School System</li>
+<li>Include Students, Teachers, Courses, Fees tables</li>
+<li>Present ER + Normalization steps (1NF → 3NF)</li>
+</ul>
+</div>
+
+<!-- QUIZ -->
+<div class="card">
+<h2>🧠 Quiz (10 Questions)</h2>
+
+<div class="quiz">
+<p>1. What is 1NF?</p>
+<input id="q1">
+<p>2. What is redundancy?</p>
+<input id="q2">
+<p>3. 2NF removes what dependency?</p>
+<input id="q3">
+<p>4. 3NF removes what dependency?</p>
+<input id="q4">
+<p>5. Is repeating columns allowed in 1NF?</p>
+<input id="q5">
+<p>6. StudentID → DeptID → DeptName is?</p>
+<input id="q6">
+<p>7. Name one benefit of normalization</p>
+<input id="q7">
+<p>8. What is atomic value?</p>
+<input id="q8">
+<p>9. Which NF removes partial dependency?</p>
+<input id="q9">
+<p>10. Which NF removes transitive dependency?</p>
+<input id="q10">
+
+<button onclick="checkQuiz()">Submit Quiz</button>
+<p id="result"></p>
+</div>
+</div>
+
+<!-- HOMEWORK -->
+<div class="card">
+<h2>🏠 Project / Homework Assignment</h2>
+<ul>
+<li>Create a <b>Library Management System Database</b></li>
+<li>Design tables in 1NF, 2NF, 3NF</li>
+<li>Draw ER diagram</li>
+<li>Write explanation (2–3 pages)</li>
+<li>Prepare PowerPoint presentation (8–10 slides)</li>
+</ul>
+</div>
+
+</section>
+
+<script>
+function checkQuiz() {
+    let score = 0;
+
+    let answers = {
+        q1: "atomic",
+        q2: "duplicate",
+        q3: "partial",
+        q4: "transitive",
+        q5: "no",
+        q6: "transitive",
+        q7: "reduce redundancy",
+        q8: "single value",
+        q9: "2nf",
+        q10: "3nf"
+    };
+
+    for (let key in answers) {
+        let user = document.getElementById(key).value.toLowerCase();
+        if (user.includes(answers[key])) {
+            score++;
+        }
+    }
+
+    document.getElementById("result").innerText =
+        "Your Score: " + score + " / 10";
+}
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>2NF & 3NF Deep Explanation</title>
+
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f4f6f9;
+}
+
+header {
+    background: #4F46E5;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+section {
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.bad {
+    background: #fee2e2;
+}
+
+.good {
+    background: #dcfce7;
+}
+
+.step {
+    background: #e0e7ff;
+    padding: 10px;
+    border-left: 5px solid #4F46E5;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>2NF & 3NF Deep Understanding</h1>
+<p>Partial Dependency • Transitive Dependency • Step-by-Step Normalization Flow</p>
+</header>
+
+<section>
+
+<!-- PARTIAL DEPENDENCY -->
+<div class="card">
+<h2>📘 Partial Dependency (2NF Concept)</h2>
+
+<p><b>Definition:</b> A partial dependency occurs when a non-key attribute depends on only part of a composite primary key.</p>
+
+<div class="step">
+<b>Key Idea:</b> Happens only when primary key is composite (multiple columns)
+</div>
+
+<h3>❌ Problem Table (Before 2NF)</h3>
+
+<table>
+<tr>
+<th>StudentID</th>
+<th>CourseID</th>
+<th>StudentName</th>
+<th>CourseName</th>
+<th>Instructor</th>
+</tr>
+
+<tr class="bad">
+<td>S1</td><td>C1</td><td>Ram</td><td>DBMS</td><td>Mr. Sharma</td>
+</tr>
+
+<tr class="bad">
+<td>S1</td><td>C2</td><td>Ram</td><td>DSA</td><td>Mr. Verma</td>
+</tr>
+
+<tr class="bad">
+<td>S2</td><td>C1</td><td>Sita</td><td>DBMS</td><td>Mr. Sharma</td>
+</tr>
+</table>
+
+<p>❌ Problem: StudentName depends only on StudentID, not full key (StudentID + CourseID)</p>
+
+<h3>✔ Solution (2NF Tables)</h3>
+
+<table>
+<tr><th>Student</th></tr>
+<tr><td>S1 - Ram</td></tr>
+<tr><td>S2 - Sita</td></tr>
+</table>
+
+<table>
+<tr><th>Course</th></tr>
+<tr><td>C1 - DBMS - Mr. Sharma</td></tr>
+<tr><td>C2 - DSA - Mr. Verma</td></tr>
+</table>
+
+<table>
+<tr><th>Enrollment</th></tr>
+<tr><td>S1 - C1</td></tr>
+<tr><td>S1 - C2</td></tr>
+<tr><td>S2 - C1</td></tr>
+</table>
+
+</div>
+
+<!-- TRANSITIVE DEPENDENCY -->
+<div class="card">
+<h2>📗 Transitive Dependency (3NF Concept)</h2>
+
+<p><b>Definition:</b> A transitive dependency occurs when a non-key attribute depends on another non-key attribute.</p>
+
+<div class="step">
+Example: StudentID → DeptID → DeptName
+</div>
+
+<h3>❌ Problem Table (Before 3NF)</h3>
+
+<table>
+<tr>
+<th>StudentID</th>
+<th>Name</th>
+<th>DeptID</th>
+<th>DeptName</th>
+<th>DeptLocation</th>
+</tr>
+
+<tr class="bad">
+<td>S1</td><td>Ram</td><td>D1</td><td>CS</td><td>Block A</td>
+</tr>
+
+<tr class="bad">
+<td>S2</td><td>Sita</td><td>D1</td><td>CS</td><td>Block A</td>
+</tr>
+
+<tr class="bad">
+<td>S3</td><td>Hari</td><td>D2</td><td>IT</td><td>Block B</td>
+</tr>
+</table>
+
+<p>❌ Issue: DeptName depends on DeptID, not directly on StudentID</p>
+
+</div>
+
+<!-- 3NF FLOW -->
+<div class="card">
+<h2>🔥 3NF Step-by-Step Flow (VERY IMPORTANT)</h2>
+
+<div class="step">
+<b>STEP 1:</b> Start with 2NF table (Student + Dept info together)
+</div>
+
+<div class="step">
+<b>STEP 2:</b> Identify dependency chain:<br>
+StudentID → DeptID → DeptName
+</div>
+
+<div class="step">
+<b>STEP 3:</b> Detect transitive dependency
+</div>
+
+<div class="step">
+<b>STEP 4:</b> Split tables
+</div>
+
+<h3>✔ Final 3NF Tables</h3>
+
+<table>
+<tr><th>Student Table</th></tr>
+<tr><td>S1 - Ram - D1</td></tr>
+<tr><td>S2 - Sita - D1</td></tr>
+<tr><td>S3 - Hari - D2</td></tr>
+</table>
+
+<table>
+<tr><th>Department Table</th></tr>
+<tr><td>D1 - CS - Block A</td></tr>
+<tr><td>D2 - IT - Block B</td></tr>
+</table>
+
+<div class="step">
+🎯 Result: No redundancy, no indirect dependency, high data integrity
+</div>
+
+</div>
+
+<!-- SUMMARY -->
+<div class="card">
+<h2>📌 Final Summary</h2>
+
+<ul>
+<li><b>1NF:</b> Remove repeating groups</li>
+<li><b>2NF:</b> Remove partial dependency</li>
+<li><b>3NF:</b> Remove transitive dependency</li>
+</ul>
+
+</div>
+
+</section>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Normalization: 1NF to 3NF</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #3b82f6;
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg: #f1f5f9;
+        }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: #334155; line-height: 1.6; margin: 0; }
+        .container { max-width: 1000px; margin: 40px auto; background: white; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: var(--primary); color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+        .content { padding: 40px; min-height: 500px; }
+        .slide { display: none; animation: slideIn 0.4s ease-out; }
+        .active { display: block; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #fff; border: 1px solid #e2e8f0; }
+        th, td { border: 1px solid #e2e8f0; padding: 12px; text-align: left; }
+        th { background: #f8fafc; color: var(--primary); font-weight: 700; }
+        .pk { color: var(--accent); font-weight: bold; text-decoration: underline; }
+        
+        .box { padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 5px solid var(--accent); }
+        .tps { background: #eff6ff; border-color: var(--accent); }
+        .tgs { background: #f0fdf4; border-color: var(--success); }
+        .def { background: #fff7ed; border-color: #f97316; }
+
+        .btn-nav { padding: 12px 24px; cursor: pointer; background: var(--accent); color: white; border: none; border-radius: 6px; font-weight: 600; transition: 0.2s; }
+        .btn-nav:hover { background: #2563eb; transform: scale(1.05); }
+        .footer { padding: 20px 40px; background: #f8fafc; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; }
+
+        .quiz-card { background: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #e2e8f0; }
+        .answer { display: none; color: var(--success); font-weight: bold; margin-top: 10px; padding: 10px; border-top: 1px dashed #cbd5e1; }
+    </style>
+</head>
+<body>
+
+
+
+<script>
+    let current = 1;
+    const total = 7;
+
+    function move(dir) {
+        document.getElementById('s' + current).classList.remove('active');
+        current += dir;
+        if (current > total) current = 1;
+        if (current < 1) current = total;
+        document.getElementById('s' + current).classList.add('active');
+        document.getElementById('slide-num').innerText = `Slide ${current} of ${total}`;
+    }
+
+    function toggleAns(id) {
+        const el = document.getElementById(id);
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+</script>
+
+</body>
+</html>
+</body>
+</html>
+</body>
+</html>
