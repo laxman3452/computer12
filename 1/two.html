@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DBMS Concepts - Field, Record, Keys</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+<!-- HEADER -->
+<header class="bg-indigo-700 text-white text-center p-6 text-2xl font-bold">
+1.2 DBMS Concepts: Field, Record, Object & Keys
+</header>
+
+<!-- INTRO -->
+<section class="p-6 grid md:grid-cols-2 gap-4">
+
+  <div class="bg-white p-4 rounded-xl shadow">
+    <h2 class="text-xl font-bold text-indigo-600">📌 Field (Smallest Unit)</h2>
+    <p class="mt-2">
+      A <b>field</b> is the smallest unit of data in a database. It represents a single attribute.
+    </p>
+    <p class="mt-2 text-gray-600">
+      Example: Name, Age, Address, Roll No
+    </p>
+  </div>
+
+  <div class="bg-white p-4 rounded-xl shadow">
+    <h2 class="text-xl font-bold text-green-600">📌 Record</h2>
+    <p class="mt-2">
+      A <b>record</b> is a collection of related fields representing one entity instance.
+    </p>
+    <p class="mt-2 text-gray-600">
+      Example: (Ram, 20, Kathmandu)
+    </p>
+  </div>
+
+</section>
+
+<!-- OBJECT + KEYS -->
+<section class="p-6 grid md:grid-cols-2 gap-4">
+
+  <div class="bg-white p-4 rounded-xl shadow">
+    <h2 class="text-xl font-bold text-purple-600">📌 Object (DBMS Context)</h2>
+    <p class="mt-2">
+      An <b>object</b> is a real-world entity represented in the database.
+    </p>
+    <p class="mt-2 text-gray-600">
+      Example: Student, Teacher, Book, Employee
+    </p>
+  </div>
+
+  <div class="bg-white p-4 rounded-xl shadow">
+    <h2 class="text-xl font-bold text-red-600">🔑 Keys in DBMS</h2>
+    <ul class="mt-2 list-disc pl-5">
+      <li><b>Primary Key:</b> Unique identifier of a record</li>
+      <li><b>Candidate Key:</b> All possible unique keys</li>
+      <li><b>Alternate Key:</b> Candidate keys not selected as primary</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- KEY EXAMPLE -->
+<section class="p-6 bg-white mx-6 rounded-xl shadow">
+  <h2 class="text-xl font-bold">📊 Example (Student Table)</h2>
+
+  <table class="w-full mt-3 border">
+    <tr class="bg-gray-200">
+      <th class="border p-2">StudentID</th>
+      <th class="border p-2">Name</th>
+      <th class="border p-2">Email</th>
+      <th class="border p-2">Phone</th>
+    </tr>
+    <tr>
+      <td class="border p-2">101</td>
+      <td class="border p-2">Ram</td>
+      <td class="border p-2">ram@gmail.com</td>
+      <td class="border p-2">9800000000</td>
+    </tr>
+  </table>
+
+  <p class="mt-3 text-gray-700">
+    ✔ Primary Key = StudentID (unique)<br>
+    ✔ Candidate Keys = StudentID, Email, Phone<br>
+    ✔ Alternate Keys = Email, Phone
+  </p>
+</section>
+
+<!-- TPS -->
+<section class="p-6 grid md:grid-cols-2 gap-4">
+
+  <div class="bg-white p-4 rounded-xl shadow">
+    <h2 class="font-bold text-lg">🤝 TPS (Think–Pair–Share)</h2>
+    <ol class="list-decimal pl-5 mt-2">
+      <li>Think: Why must a primary key be unique?</li>
+      <li>Pair: Discuss real-life examples of candidate keys</li>
+      <li>Share: Present how mobile number can be a key</li>
+    </ol>
+  </div>
+
+  <div class="bg-white p-4 rounded-xl shadow">
+    <h2 class="font-bold text-lg">👥 TGS (Think–Group–Share)</h2>
+    <ol class="list-decimal pl-5 mt-2">
+      <li>Think: What happens if duplicate keys exist?</li>
+      <li>Group: Design a Student database schema</li>
+      <li>Share: Present ER diagram in class</li>
+    </ol>
+  </div>
+
+</section>
+
+<!-- PROJECT WORK -->
+<section class="p-6 bg-white mx-6 rounded-xl shadow">
+  <h2 class="text-xl font-bold">📌 Home Assignment / Project Work</h2>
+  <ul class="list-disc pl-5 mt-2">
+    <li>Create a PowerPoint on DBMS Keys with examples</li>
+    <li>Design a School database (Student, Teacher, Course)</li>
+    <li>Make ER diagram of Library Management System</li>
+    <li>Write differences between Primary, Candidate, Alternate keys</li>
+    <li>Create a sample table with 5 records in Excel</li>
+  </ul>
+</section>
+
+<!-- QUIZ -->
+<section class="p-6 bg-white mx-6 rounded-xl shadow">
+  <h2 class="text-2xl font-bold mb-4">🧠 Technical Quiz (10 Questions)</h2>
+
+  <div id="quiz"></div>
+
+  <button onclick="submitQuiz()" class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded">
+    Submit Quiz
+  </button>
+
+  <p id="result" class="mt-4 font-bold"></p>
+</section>
+
+<script>
+const questions = [
+  {q:"Smallest unit of data is?", options:["Record","Field","Object","Table"], answer:1},
+  {q:"Collection of fields is called?", options:["Object","Record","Key","Schema"], answer:1},
+  {q:"Real-world entity is called?", options:["Field","Record","Object","Attribute"], answer:2},
+  {q:"Primary Key must be?", options:["Duplicate","Unique","Null","Array"], answer:1},
+  {q:"Candidate key means?", options:["Only one key","All possible keys","Foreign key","Null key"], answer:1},
+  {q:"Alternate key is?", options:["Primary key","Not selected candidate key","Foreign key","Composite key"], answer:1},
+  {q:"Which can identify record uniquely?", options:["Field","Primary Key","Record","Table"], answer:1},
+  {q:"Example of field?", options:["Ram","Student table","Database","Entity"], answer:0},
+  {q:"Email can be?", options:["Primary key always","Candidate key","Table","Record"], answer:1},
+  {q:"DBMS stands for?", options:["Data Basic Management System","Database Management System","Data Block Memory System","None"], answer:1}
+];
+
+const quizDiv = document.getElementById("quiz");
+
+questions.forEach((q,i)=>{
+  let html = `<div class='mb-3'><p class='font-semibold'>${q.q}</p>`;
+  q.options.forEach((opt,j)=>{
+    html += `
+      <label class='block'>
+        <input type='radio' name='q${i}' value='${j}'> ${opt}
+      </label>`;
+  });
+  html += `</div>`;
+  quizDiv.innerHTML += html;
+});
+
+function submitQuiz(){
+  let score = 0;
+
+  questions.forEach((q,i)=>{
+    let selected = document.querySelector(`input[name='q${i}']:checked`);
+    if(selected && parseInt(selected.value) === q.answer){
+      score++;
+    }
+  });
+
+  document.getElementById("result").innerText =
+    `Your Score: ${score} / ${questions.length}`;
+}
+</script>
+
+</body>
+</html>
