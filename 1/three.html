@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 12 DBMS - DDL & DML</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<!-- NAV -->
+<nav class="bg-blue-900 text-white p-3 fixed w-full top-0 shadow">
+  <div class="flex justify-between">
+    <h1 class="font-bold">📚 Class 12 DBMS - DDL & DML</h1>
+    <div class="space-x-4 text-sm">
+      <a href="#ddl">DDL</a>
+      <a href="#dml">DML</a>
+      <a href="#demo">Demo</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#tps">TPS/TGS</a>
+      <a href="#project">Project</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section class="pt-20 text-center p-6">
+  <h1 class="text-3xl font-bold text-blue-900">Data Definition & Data Manipulation Language</h1>
+  <p class="text-gray-600">Class 12 Computer Science - DBMS Chapter</p>
+</section>
+
+<!-- DDL -->
+<section id="ddl" class="bg-white m-6 p-6 rounded shadow">
+  <h2 class="text-2xl font-bold text-blue-800">🧱 DDL (Data Definition Language)</h2>
+
+  <p class="mt-2">
+    DDL is a subset of SQL used to define, modify, and remove database structures such as tables, schemas, and indexes.
+    It does NOT deal with actual data inside tables.
+  </p>
+
+  <h3 class="mt-4 font-bold">💻 DDL Syntax with Explanation</h3>
+
+<!-- CREATE -->
+<div class="mt-3">
+  <h4 class="font-semibold">1️⃣ CREATE TABLE</h4>
+  <pre class="bg-black text-green-300 p-3 rounded mt-2">
+CREATE TABLE Student (
+  id INT,
+  name VARCHAR(50),
+  age INT
+);
+  </pre>
+  <p>✔ Creates a new table named Student in database.</p>
+</div>
+
+<!-- ALTER -->
+<div class="mt-4">
+  <h4 class="font-semibold">2️⃣ ALTER TABLE</h4>
+  <pre class="bg-black text-green-300 p-3 rounded mt-2">
+ALTER TABLE Student ADD email VARCHAR(100);
+  </pre>
+  <p>✔ Adds a new column "email" to existing table.</p>
+</div>
+
+<!-- DROP -->
+<div class="mt-4">
+  <h4 class="font-semibold">3️⃣ DROP TABLE</h4>
+  <pre class="bg-black text-green-300 p-3 rounded mt-2">
+DROP TABLE Student;
+  </pre>
+  <p>✔ Permanently deletes table structure + data.</p>
+</div>
+
+<!-- TRUNCATE -->
+<div class="mt-4">
+  <h4 class="font-semibold">4️⃣ TRUNCATE TABLE</h4>
+  <pre class="bg-black text-green-300 p-3 rounded mt-2">
+TRUNCATE TABLE Student;
+  </pre>
+  <p>✔ Deletes all records but keeps table structure intact.</p>
+</div>
+
+<!-- DML -->
+<section id="dml" class="bg-white m-6 p-6 rounded shadow">
+  <h2 class="text-2xl font-bold text-green-700">🧾 DML (Data Manipulation Language)</h2>
+
+  <p class="mt-2">
+    DML is used to manipulate data stored inside database tables.
+  </p>
+
+  <h3 class="mt-4 font-bold">📌 Commands:</h3>
+  <ul class="list-disc pl-6">
+    <li><b>INSERT</b> → Add new records</li>
+    <li><b>UPDATE</b> → Modify existing data</li>
+    <li><b>DELETE</b> → Remove specific records</li>
+    <li><b>SELECT</b> → Retrieve data</li>
+  </ul>
+
+  <h3 class="mt-4 font-bold">💻 Syntax Examples:</h3>
+
+  <pre class="bg-black text-green-300 p-3 rounded mt-2">
+INSERT INTO Student VALUES (1, 'Ram', 18);
+  </pre>
+
+  <pre class="bg-black text-green-300 p-3 rounded mt-2">
+UPDATE Student SET age = 19 WHERE id = 1;
+  </pre>
+
+  <pre class="bg-black text-green-300 p-3 rounded mt-2">
+DELETE FROM Student WHERE id = 1;
+  </pre>
+
+  <pre class="bg-black text-green-300 p-3 rounded mt-2">
+SELECT * FROM Student;
+  </pre>
+
+  <h3 class="mt-4 font-bold">📤 Output Example:</h3>
+  <pre class="bg-gray-900 text-white p-3 rounded mt-2">
++----+------+-----+
+| id | name | age |
++----+------+-----+
+| 1  | Ram  | 19  |
++----+------+-----+
+  </pre>
+</section>
+
+<!-- DEMO -->
+<section id="demo" class="bg-white m-6 p-6 rounded shadow">
+  <h2 class="text-2xl font-bold">🧪 Live Concept Demo</h2>
+
+  <p class="mt-2">
+    Think: DDL creates structure, DML fills data into it.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-4 mt-4">
+
+    <div class="bg-blue-50 p-3 rounded">
+      <h3 class="font-bold">DDL Result</h3>
+      <p>Table created → Student(id, name, age)</p>
+    </div>
+
+    <div class="bg-green-50 p-3 rounded">
+      <h3 class="font-bold">DML Result</h3>
+      <p>Data inserted → (1, Ram, 18)</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="bg-white m-6 p-6 rounded shadow">
+  <h2 class="text-xl font-bold">🧠 MCQ Quiz (10 Questions)</h2>
+
+  <div id="quizBox"></div>
+
+  <button onclick="check()" class="bg-blue-900 text-white px-4 py-2 rounded mt-3">
+    Submit
+  </button>
+
+  <p id="result" class="mt-2 font-bold"></p>
+</section>
+
+<!-- TPS / TGS -->
+<section id="tps" class="m-6 grid md:grid-cols-2 gap-4">
+
+  <div class="bg-white p-4 rounded shadow">
+    <h3 class="font-bold">🤝 TPS (Think–Pair–Share)</h3>
+    <ul class="list-disc pl-5">
+      <li>Difference between DROP and DELETE</li>
+      <li>Why SELECT is most used command?</li>
+      <li>Real life use of UPDATE in banking</li>
+    </ul>
+  </div>
+
+  <div class="bg-white p-4 rounded shadow">
+    <h3 class="font-bold">👥 TGS (Think–Group–Share)</h3>
+    <ul class="list-disc pl-5">
+      <li>Design School DBMS system</li>
+      <li>Create ER to SQL mapping</li>
+      <li>Hospital DBMS use case</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- PROJECT -->
+<section id="project" class="bg-white m-6 p-6 rounded shadow">
+  <h2 class="font-bold text-lg">📌 Home Assignment</h2>
+
+  <ul class="list-disc pl-6 mt-2">
+    <li>Create PPT on SQL Commands (DDL & DML)</li>
+    <li>Write 5 SQL queries for Student database</li>
+    <li>Explain real-life DBMS usage in bank system</li>
+    <li>Design database for Library system</li>
+  </ul>
+</section>
+
+<script>
+const q = [
+ {q:"DDL stands for?",o:["Data Definition Language","Data Data Logic","Database Design Language","None"],a:0},
+ {q:"Which command removes structure?",o:["DROP","DELETE","SELECT","INSERT"],a:0},
+ {q:"DML is used for?",o:["Structure","Data manipulation","Network","CPU"],a:1},
+ {q:"INSERT belongs to?",o:["DDL","DML","HTML","OS"],a:1},
+ {q:"Which command retrieves data?",o:["SELECT","DROP","ALTER","CREATE"],a:0},
+ {q:"TRUNCATE does?",o:["Delete structure","Delete all records","Add records","Update"],a:1},
+ {q:"UPDATE is used for?",o:["Modify data","Create table","Delete table","Structure"],a:0},
+ {q:"DDL affects?",o:["Data only","Structure","Hardware","Internet"],a:1},
+ {q:"DELETE removes?",o:["Table","Records","Database","System"],a:1},
+ {q:"SELECT * means?",o:["All columns","One column","Delete all","Create table"],a:0}
+];
+
+let box=document.getElementById("quizBox");
+
+q.forEach((x,i)=>{
+ let html=`<div class='mb-3'><p>${x.q}</p>`;
+ x.o.forEach((o,j)=>{
+  html+=`<label><input type='radio' name='q${i}' value='${j}'> ${o}</label><br>`;
+ });
+ html+="</div>";
+ box.innerHTML+=html;
+});
+
+function check(){
+ let score=0;
+ q.forEach((x,i)=>{
+  let ans=document.querySelector(`input[name=q${i}]:checked`);
+  if(ans && ans.value==x.a) score++;
+ });
+ document.getElementById("result").innerText="Score: "+score+"/10";
+}
+</script>
+
+</body>
+</html>
