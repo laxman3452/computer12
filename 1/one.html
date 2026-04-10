@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DBMS Chapter 1 - Interactive Learning</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;display:flex;}
+
+/* Sidebar */
+.sidebar{
+width:250px;
+background:#4F46E5;
+color:white;
+height:100vh;
+position:fixed;
+padding:20px;
+overflow-y:auto;
+}
+.sidebar h2{font-size:18px;margin-bottom:10px;}
+.sidebar a{
+display:block;
+color:white;
+padding:10px;
+border-radius:6px;
+text-decoration:none;
+margin-bottom:5px;
+cursor:pointer;
+}
+.sidebar a:hover{background:#3730a3;}
+
+/* Main content */
+.main{
+margin-left:270px;
+padding:20px;
+width:100%;
+}
+section{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+display:none;
+}
+section.active{display:block;}
+
+h2{color:#4F46E5;}
+.card{padding:10px;background:#f9fafb;margin:10px 0;border-radius:8px;}
+button{padding:10px 15px;background:#10B981;color:white;border:none;border-radius:6px;cursor:pointer;}
+button:hover{background:#059669;}
+.quiz-box{margin:10px 0;padding:10px;border:1px solid #ddd;border-radius:10px;}
+.result{font-weight:bold;margin-top:10px;}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+<h2>📘 DBMS Chapter 1</h2>
+<a onclick="showSection('intro')">1.1 Introduction</a>
+<a onclick="showSection('adv')">1.2 Advantages</a>
+<a onclick="showSection('tps')">TPS Activity</a>
+<a onclick="showSection('tgs')">Group Task</a>
+<a onclick="showSection('home')">Home Project</a>
+<a onclick="showSection('quiz')">Quiz (10 MCQ)</a>
+</div>
+
+<div class="main">
+
+<section id="intro" class="active">
+<h2>1.1 Introduction</h2>
+<div class="card"><b>Data:</b> Raw facts without meaning (Ram, 20, Kathmandu)</div>
+<div class="card"><b>Information:</b> Processed data with meaning</div>
+<div class="card"><b>Database:</b> Organized collection of data</div>
+<div class="card"><b>DBMS:</b> Software to manage database</div>
+<div class="card"><b>Database System:</b> DB + DBMS + Users + Hardware</div>
+</section>
+
+<section id="adv">
+<h2>1.2 Advantages of DBMS</h2>
+<ul>
+<li>Reduces data redundancy</li>
+<li>Improves security</li>
+<li>Easy access and retrieval</li>
+<li>Data consistency</li>
+<li>Multi-user support</li>
+<li>Backup & recovery</li>
+<li>Data sharing</li>
+</ul>
+</section>
+
+<section id="tps">
+<h2>🎯 TPS Activity</h2>
+<div class="card">
+<b>Think:</b> What if school uses Excel instead of DBMS?<br>
+<b>Pair:</b> Discuss with partner<br>
+<b>Share:</b> Present in class
+</div>
+</section>
+
+<section id="tgs">
+<h2>👥 Group Task (TGS)</h2>
+<div class="card">
+Design a school database system with:
+<ul>
+<li>Student Table</li>
+<li>Teacher Table</li>
+<li>Subject Table</li>
+</ul>
+</div>
+</section>
+
+<section id="home">
+<h2>📚 Home Project</h2>
+<div class="card">
+1. PPT: DBMS vs File System<br>
+2. Draw DBMS architecture<br>
+3. 5 real-life DBMS examples<br>
+4. Library database design
+</div>
+</section>
+
+<section id="quiz">
+<h2>🧠 Quiz (10 MCQ)</h2>
+<div id="quizBox"></div>
+<button onclick="checkAnswers()">Submit Quiz</button>
+<div class="result" id="result"></div>
+</section>
+
+</div>
+
+<script>
+function showSection(id){
+document.querySelectorAll('section').forEach(sec=>sec.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
+const quizData = [
+["What is data?",["Processed info","Raw facts","Database","Software"],1],
+["DBMS stands for?",["Data Backup System","Database Management System","Data Model","None"],1],
+["Example of DBMS?",["Chrome","MySQL","Paint","Word"],1],
+["Database is?",["Software","Data collection","Hardware","Language"],1],
+["Information is?",["Raw data","Processed data","Error","None"],1],
+["DBMS reduces?",["Speed","Redundancy","Power","Memory"],1],
+["Multi-user supported by?",["DBMS","Paint","Notepad","Calculator"],0],
+["Backup means?",["Delete","Copy data","Encrypt","None"],1],
+["Database system includes?",["DB only","DBMS only","DB+DBMS+Users+Hardware","Users only"],2],
+["Oracle is?",["Browser","DBMS","Editor","Game"],1]
+];
+
+let html='';
+quizData.forEach((q,i)=>{
+html+=`<div class='quiz-box'><p>${i+1}. ${q[0]}</p>`;
+q[1].forEach((opt,j)=>{
+html+=`<label><input type='radio' name='q${i}' value='${j}'> ${opt}</label><br>`;
+});
+html+='</div>';
+});
+document.getElementById('quizBox').innerHTML=html;
+
+function checkAnswers(){
+let score=0;
+quizData.forEach((q,i)=>{
+let sel=document.querySelector(`input[name=q${i}]:checked`);
+if(sel && parseInt(sel.value)==q[2]) score++;
+});
+document.getElementById('result').innerText=`Score: ${score}/10`;
+}
+</script>
+
+</body>
+</html>
