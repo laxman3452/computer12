@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Database Security - Class 12 DBMS</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<!-- HEADER -->
+<section class="bg-indigo-900 text-white text-center p-6">
+  <h1 class="text-2xl font-bold">🔐 Database Security</h1>
+  <p>Class 12 DBMS - Interactive Learning Module</p>
+</section>
+
+<!-- INTRO -->
+<section class="m-6 bg-white p-5 rounded shadow">
+  <h2 class="text-xl font-bold text-indigo-700">🧠 What is Database Security?</h2>
+
+  <p class="mt-2">
+    <b>Database security</b> refers to protecting database from:
+  </p>
+
+  <ul class="list-disc pl-6 mt-2">
+    <li>Unauthorized access</li>
+    <li>Data corruption</li>
+    <li>Data loss</li>
+    <li>Hacking or misuse</li>
+  </ul>
+
+  <p class="mt-3 text-red-600 font-semibold">
+    Goal: Keep data SAFE, ACCURATE, and AVAILABLE
+  </p>
+</section>
+
+<!-- PURPOSE -->
+<section class="m-6 bg-white p-5 rounded shadow">
+  <h2 class="text-green-700 font-bold text-xl">🎯 Purpose of Database Security</h2>
+
+  <ul class="list-disc pl-6 mt-2">
+    <li>Protect confidential data</li>
+    <li>Prevent unauthorized access</li>
+    <li>Maintain data integrity</li>
+    <li>Ensure system reliability</li>
+  </ul>
+</section>
+
+<!-- METHODS -->
+<section class="m-6 bg-white p-5 rounded shadow">
+  <h2 class="text-indigo-800 font-bold text-xl">🛡️ Methods of Database Security</h2>
+
+  <!-- METHOD 1 -->
+  <div class="mt-4">
+    <h3 class="font-bold text-blue-700">1️⃣ Username & Password</h3>
+    <p>Only authorized users can access database.</p>
+  </div>
+
+  <!-- METHOD 2 -->
+  <div class="mt-4">
+    <h3 class="font-bold text-blue-700">2️⃣ Encryption</h3>
+    <p>Data is converted into unreadable format to prevent hacking.</p>
+
+    <pre class="bg-gray-900 text-green-300 p-2 rounded mt-2">
+Original: 12345
+Encrypted: A9X#2K9!
+    </pre>
+  </div>
+
+  <!-- METHOD 3 -->
+  <div class="mt-4">
+    <h3 class="font-bold text-blue-700">3️⃣ Access Control (Roles)</h3>
+    <p>Different users have different permissions.</p>
+
+    <ul class="list-disc pl-6">
+      <li>Admin → Full access</li>
+      <li>Teacher → Limited access</li>
+      <li>Student → View only</li>
+    </ul>
+  </div>
+
+  <!-- METHOD 4 -->
+  <div class="mt-4">
+    <h3 class="font-bold text-blue-700">4️⃣ Backup & Recovery</h3>
+    <p>Copy of data is stored to recover after failure.</p>
+  </div>
+
+  <!-- METHOD 5 -->
+  <div class="mt-4">
+    <h3 class="font-bold text-blue-700">5️⃣ Firewall Protection</h3>
+    <p>Blocks unauthorized network access to database.</p>
+  </div>
+
+  <!-- METHOD 6 -->
+  <div class="mt-4">
+    <h3 class="font-bold text-blue-700">6️⃣ Audit Logs</h3>
+    <p>Records all user activities in database.</p>
+  </div>
+</section>
+
+<!-- REAL LIFE -->
+<section class="m-6 bg-white p-5 rounded shadow">
+  <h2 class="font-bold text-xl">🌍 Real-Life Examples</h2>
+
+  <ul class="list-disc pl-6 mt-2">
+    <li>Bank accounts protected by password + OTP</li>
+    <li>Facebook login security system</li>
+    <li>School system with role-based login</li>
+    <li>Hospital patient data protection</li>
+  </ul>
+</section>
+
+<!-- SECURITY FLOW DIAGRAM -->
+<section class="m-6 bg-white p-5 rounded shadow">
+  <h2 class="font-bold text-xl text-indigo-800">📌 Security Flow Diagram</h2>
+
+  <pre class="bg-black text-green-300 p-3 rounded mt-3">
+User Request
+     ↓
+Login (Username/Password)
+     ↓
+Authentication Check
+     ↓
+Access Control (Role Check)
+     ↓
+Database Access Allowed / Denied
+  </pre>
+</section>
+
+<!-- QUIZ -->
+<section class="m-6 bg-white p-5 rounded shadow">
+  <h2 class="font-bold text-xl">🧠 Quiz (10 MCQs)</h2>
+
+  <div id="quiz"></div>
+
+  <button onclick="check()" class="bg-indigo-900 text-white px-4 py-2 mt-3 rounded">
+    Submit
+  </button>
+
+  <p id="result" class="mt-2 font-bold"></p>
+</section>
+
+<!-- TPS TGS -->
+<section class="m-6 grid md:grid-cols-2 gap-4">
+
+  <div class="bg-white p-4 rounded shadow">
+    <h3 class="font-bold">🤝 TPS (Think Pair Share)</h3>
+    <ul class="list-disc pl-5">
+      <li>Why is database security important?</li>
+      <li>What happens without backup?</li>
+      <li>Real-life hacking risks</li>
+    </ul>
+  </div>
+
+  <div class="bg-white p-4 rounded shadow">
+    <h3 class="font-bold">👥 TGS (Group Study)</h3>
+    <ul class="list-disc pl-5">
+      <li>Design secure banking system</li>
+      <li>Hospital database security model</li>
+      <li>School login system design</li>
+    </ul>
+  </div>
+
+</section>
+
+<script>
+const q=[
+ {q:"Database security protects from?",o:["Unauthorized access","Speed","Hardware","UI"],a:0},
+ {q:"Encryption means?",o:["Data unreadable","Fast internet","Delete data","Copy file"],a:0},
+ {q:"Access control is based on?",o:["Roles","Colors","Speed","Size"],a:0},
+ {q:"Backup is used for?",o:["Data recovery","Hacking","Delete data","Speed"],a:0},
+ {q:"Firewall protects from?",o:["Unauthorized network access","Printing","Storage","UI"],a:0},
+ {q:"Audit logs record?",o:["User activity","Speed","CPU","RAM"],a:0},
+ {q:"Admin has?",o:["Full access","No access","View only","Delete only"],a:0},
+ {q:"Student role is usually?",o:["View only","Admin","Delete data","Full control"],a:0},
+ {q:"Main goal of security?",o:["Protect data","Slow system","Increase errors","Delete DB"],a:0},
+ {q:"Without security risk is?",o:["Data loss","Faster system","Better UI","Backup"],a:0}
+];
+
+let box=document.getElementById("quiz");
+
+q.forEach((x,i)=>{
+ let html=`<div class='mb-3'><p>${x.q}</p>`;
+ x.o.forEach((o,j)=>{
+  html+=`<label><input type='radio' name='q${i}' value='${j}'> ${o}</label><br>`;
+ });
+ html+="</div>";
+ box.innerHTML+=html;
+});
+
+function check(){
+ let score=0;
+ q.forEach((x,i)=>{
+  let ans=document.querySelector(`input[name=q${i}]:checked`);
+  if(ans && ans.value==x.a) score++;
+ });
+ document.getElementById("result").innerText="Score: "+score+"/10";
+}
+</script>
+
+</body>
+</html>
